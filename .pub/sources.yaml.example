@@ -1,0 +1,15 @@
+# Sources file — copy this to sources.yaml (which is gitignored) and edit there.
+# One entry per person. Keep notes short; verbose notes belong in a separate file.
+
+sources:
+  - name: Jane Doe
+    role: VP of Sales
+    organization: Example Corp
+    contact:
+      email: jane@example.com
+      linkedin: https://www.linkedin.com/in/janedoe/
+    expertise:
+      - long-cycle enterprise sales
+      - account memory
+    notes: Met at Saastr 2025. Open to a profile but wants to read drafts first.
+    last_contacted: 2026-04-12

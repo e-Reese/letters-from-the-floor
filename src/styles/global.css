@@ -1,0 +1,196 @@
+/*
+  Letters from the Floor — global styles.
+  Literary and restrained. Serif for prose, system sans for UI affordances.
+*/
+
+:root {
+	--paper: #fbfaf7;
+	--ink: #1a1a1a;
+	--ink-soft: #4a4a4a;
+	--rule: #d8d4ca;
+	--accent: #1d2c4d; /* deep ink blue, used sparingly */
+	--accent-hover: #0e1830;
+
+	--font-serif:
+		'Source Serif 4', 'Iowan Old Style', 'Charter', Georgia, 'Times New Roman', serif;
+	--font-sans:
+		-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+
+	--measure: 38rem;
+	--measure-wide: 48rem;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	background: var(--paper);
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background: var(--paper);
+	color: var(--ink);
+	font-family: var(--font-serif);
+	font-size: 19px;
+	line-height: 1.65;
+	font-feature-settings: 'kern', 'liga', 'onum';
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+main {
+	display: block;
+	max-width: var(--measure);
+	margin: 0 auto;
+	padding: 4rem 1.25rem 6rem;
+}
+
+a {
+	color: var(--accent);
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 2px;
+}
+
+a:hover {
+	color: var(--accent-hover);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-serif);
+	font-weight: 700;
+	color: var(--ink);
+	line-height: 1.2;
+	margin: 2rem 0 0.75rem;
+}
+
+h1 {
+	font-size: 2.25rem;
+	letter-spacing: -0.01em;
+	margin-top: 0;
+}
+
+h2 {
+	font-size: 1.5rem;
+}
+
+h3 {
+	font-size: 1.2rem;
+}
+
+p {
+	margin: 0 0 1.2em;
+}
+
+p + p {
+	text-indent: 0;
+}
+
+.prose p {
+	margin-bottom: 1.2em;
+}
+
+.prose blockquote {
+	border-left: 2px solid var(--rule);
+	margin: 1.5em 0;
+	padding: 0 0 0 1.25em;
+	color: var(--ink-soft);
+	font-style: italic;
+}
+
+.prose hr {
+	border: 0;
+	border-top: 1px solid var(--rule);
+	margin: 2.5em auto;
+	width: 4rem;
+}
+
+hr {
+	border: 0;
+	border-top: 1px solid var(--rule);
+}
+
+ul,
+ol {
+	padding-left: 1.4em;
+}
+
+li {
+	margin-bottom: 0.4em;
+}
+
+code {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	font-size: 0.92em;
+	background: rgba(0, 0, 0, 0.04);
+	padding: 0.05em 0.3em;
+}
+
+pre {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	font-size: 0.9em;
+	background: rgba(0, 0, 0, 0.04);
+	padding: 1em 1.2em;
+	overflow-x: auto;
+	line-height: 1.5;
+}
+
+pre > code {
+	background: transparent;
+	padding: 0;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+/* UI affordances — sans-serif, smaller, muted */
+.ui {
+	font-family: var(--font-sans);
+	font-size: 0.82rem;
+	letter-spacing: 0.02em;
+	color: var(--ink-soft);
+	text-transform: none;
+}
+
+.ui--caps {
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	font-size: 0.72rem;
+}
+
+@media (max-width: 640px) {
+	body {
+		font-size: 18px;
+	}
+	main {
+		padding: 2.5rem 1.1rem 4rem;
+	}
+	h1 {
+		font-size: 1.85rem;
+	}
+}
+
+.sr-only {
+	border: 0;
+	padding: 0;
+	margin: 0;
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
