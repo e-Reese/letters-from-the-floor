@@ -6,12 +6,7 @@ import Footer from '../components/Footer.astro';
 import PostCard from '../components/PostCard.astro';
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_TAGLINE } from '../consts';
 
-const isDev = import.meta.env.DEV;
-
-const allPosts = await getCollection('posts', (entry) => {
-	if (isDev) return true;
-	return entry.data.draft === false;
-});
+const allPosts = await getCollection('posts');
 
 // Approximate read time by counting body words.
 const enriched = await Promise.all(

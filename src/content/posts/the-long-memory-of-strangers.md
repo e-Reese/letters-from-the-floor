@@ -2,10 +2,6 @@
 title: The Long Memory of Strangers
 dek: On what business relationships have always been
 publishDate: 2026-05-10
-register: atlantic
-form: essay
-wordTarget: 2400
-draft: false
 sources:
   - "Bronisław Malinowski, Argonauts of the Western Pacific (1922)"
   - "Marcel Mauss, The Gift (1925)"
