@@ -7,14 +7,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 import { SITE_TITLE, AUTHOR_NAME } from '../consts';
 
 type Props = CollectionEntry<'posts'>['data'];
-
-const { title, dek, publishDate, register, corrections } = Astro.props;
-const registerLabel: Record<Props['register'], string> = {
-	atlantic: 'Atlantic Essay',
-	gladwell: 'Gladwell',
-	newyorker: 'New Yorker Profile',
-	mixed: 'Mixed',
-};
+const { title, dek, publishDate, corrections } = Astro.props as Props;
 ---
 
 <html lang="en">
@@ -26,7 +19,6 @@ const registerLabel: Record<Props['register'], string> = {
 
 		<article>
 			<header class="post-head">
-				<p class="ui ui--caps register">{registerLabel[register]}</p>
 				<h1>{title}</h1>
 				<p class="dek">{dek}</p>
 				<p class="byline ui">
@@ -53,13 +45,6 @@ const registerLabel: Record<Props['register'], string> = {
 				)
 			}
 
-			<aside class="disclosure-footer">
-				<p>
-					{AUTHOR_NAME} is the editor of {SITE_TITLE}. Disclosures: <a href="/disclosure"
-						>/disclosure</a
-					>.
-				</p>
-			</aside>
 		</article>
 
 		<Footer />
@@ -73,10 +58,6 @@ const registerLabel: Record<Props['register'], string> = {
 
 			.post-head {
 				margin-bottom: 2.5rem;
-			}
-
-			.register {
-				margin: 0 0 1rem;
 			}
 
 			.post-head h1 {
@@ -132,19 +113,6 @@ const registerLabel: Record<Props['register'], string> = {
 
 			.corrections li {
 				margin-bottom: 0.4rem;
-			}
-
-			.disclosure-footer {
-				margin-top: 3rem;
-				padding-top: 1.5rem;
-				border-top: 1px solid var(--rule);
-			}
-
-			.disclosure-footer p {
-				margin: 0;
-				font-family: var(--font-sans);
-				font-size: 0.85rem;
-				color: var(--ink-soft);
 			}
 
 			@media (max-width: 640px) {
