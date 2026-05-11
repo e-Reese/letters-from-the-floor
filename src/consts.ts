@@ -6,4 +6,4 @@ export const SITE_DESCRIPTION =
 export const SITE_TAGLINE = 'On the human texture of business.';
 export const SITE_URL = 'https://lettersfromthefloor.com';
 export const AUTHOR_NAME = 'Ethan Reese';
-export const AUTHOR_EMAIL = 'editor@lettersfromthefloor.com';
+export const AUTHOR_EMAIL = 'ethan@overclocksystems.com';
