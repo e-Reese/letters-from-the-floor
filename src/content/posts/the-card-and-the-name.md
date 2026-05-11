@@ -1,7 +1,7 @@
 ---
 title: The Card and the Name
 dek: On why the small rectangle keeps winning
-publishDate: 2026-05-08
+publishDate: 2026-05-03
 sources:
   - "Merry Ellen Scofield, 'House of Cards,' Commonplace 16.4 (2016)"
   - "John H. Young, Our Deportment (1885)"
