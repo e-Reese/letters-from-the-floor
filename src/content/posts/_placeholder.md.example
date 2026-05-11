@@ -1,0 +1,27 @@
+---
+title: Example Post Title
+dek: A one-line summary that sits below the title in italics.
+publishDate: 2026-01-01
+register: atlantic
+form: essay
+wordTarget: 2000
+draft: true
+# Optional:
+# sources:
+#   - Jane Doe (CEO, Example Corp)
+# corrections:
+#   - date: 2026-01-05
+#     note: Earlier version misspelled the subject's name.
+---
+
+<!-- LEDE -->
+
+The opening three paragraphs — written by hand. Specific, concrete, particular.
+
+<!-- BODY -->
+
+The body of the piece.
+
+<!-- KICKER -->
+
+The ending paragraph. Don't summarize. Let it resonate.

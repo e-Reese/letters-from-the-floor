@@ -134,3 +134,13 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Astro
+.astro/
+
+# macOS
+.DS_Store
+
+# pubcli local state — track templates, ignore real data
+.pub/sources.yaml
+.pub/announcements/

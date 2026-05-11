@@ -1,0 +1,120 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PostCard from '../components/PostCard.astro';
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_TAGLINE } from '../consts';
+
+const isDev = import.meta.env.DEV;
+
+const allPosts = await getCollection('posts', (entry) => {
+	if (isDev) return true;
+	return entry.data.draft === false;
+});
+
+// Approximate read time by counting body words.
+const enriched = await Promise.all(
+	allPosts.map(async (post) => {
+		const { remarkPluginFrontmatter } = await render(post);
+		const wordCount =
+			remarkPluginFrontmatter?.wordCount ??
+			(post.body ? post.body.split(/\s+/).filter(Boolean).length : 0);
+		const readingMinutes = Math.max(1, Math.round(wordCount / 240));
+		return { post, readingMinutes };
+	}),
+);
+
+const sorted = enriched.sort(
+	(a, b) => b.post.data.publishDate.valueOf() - a.post.data.publishDate.valueOf(),
+);
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+
+		<main>
+			<section class="masthead">
+				<h1>{SITE_TITLE}</h1>
+				<p class="tagline">{SITE_TAGLINE}</p>
+			</section>
+
+			<section class="archive" aria-label="Archive">
+				{
+					sorted.length === 0 ? (
+						<p class="empty">First pieces publishing soon.</p>
+					) : (
+						sorted.map(({ post, readingMinutes }) => (
+							<PostCard
+								href={`/posts/${post.id}/`}
+								title={post.data.title}
+								dek={post.data.dek}
+								publishDate={post.data.publishDate}
+								readingMinutes={readingMinutes}
+							/>
+						))
+					)
+				}
+			</section>
+		</main>
+
+		<Footer />
+
+		<style>
+			main {
+				max-width: var(--measure);
+				margin: 0 auto;
+				padding: 4rem 1.25rem 3rem;
+			}
+
+			.masthead {
+				text-align: center;
+				margin-bottom: 3.5rem;
+				padding-bottom: 2rem;
+				border-bottom: 1px solid var(--rule);
+			}
+
+			.masthead h1 {
+				font-size: 2.75rem;
+				margin: 0 0 0.6rem;
+				letter-spacing: -0.005em;
+				line-height: 1.1;
+			}
+
+			.tagline {
+				margin: 0;
+				font-style: italic;
+				color: var(--ink-soft);
+				font-size: 1.1rem;
+			}
+
+			.archive {
+				display: flex;
+				flex-direction: column;
+			}
+
+			.empty {
+				font-style: italic;
+				color: var(--ink-soft);
+				text-align: center;
+				padding: 2rem 0;
+			}
+
+			@media (max-width: 640px) {
+				main {
+					padding: 2.5rem 1.1rem 2.5rem;
+				}
+				.masthead h1 {
+					font-size: 2.25rem;
+				}
+				.tagline {
+					font-size: 1rem;
+				}
+			}
+		</style>
+	</body>
+</html>

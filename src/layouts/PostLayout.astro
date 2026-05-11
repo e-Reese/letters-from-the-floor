@@ -1,0 +1,160 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import { SITE_TITLE, AUTHOR_NAME } from '../consts';
+
+type Props = CollectionEntry<'posts'>['data'];
+
+const { title, dek, publishDate, register, corrections } = Astro.props;
+const registerLabel: Record<Props['register'], string> = {
+	atlantic: 'Atlantic Essay',
+	gladwell: 'Gladwell',
+	newyorker: 'New Yorker Profile',
+	mixed: 'Mixed',
+};
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={`${title} — ${SITE_TITLE}`} description={dek} />
+	</head>
+	<body>
+		<Header />
+
+		<article>
+			<header class="post-head">
+				<p class="ui ui--caps register">{registerLabel[register]}</p>
+				<h1>{title}</h1>
+				<p class="dek">{dek}</p>
+				<p class="byline ui">
+					By {AUTHOR_NAME} &middot; <FormattedDate date={publishDate} />
+				</p>
+			</header>
+
+			<div class="prose post-body">
+				<slot />
+			</div>
+
+			{
+				corrections && corrections.length > 0 && (
+					<section class="corrections">
+						<h2>Corrections</h2>
+						<ul>
+							{corrections.map((c) => (
+								<li>
+									<FormattedDate date={c.date} /> — {c.note}
+								</li>
+							))}
+						</ul>
+					</section>
+				)
+			}
+
+			<aside class="disclosure-footer">
+				<p>
+					{AUTHOR_NAME} is the editor of {SITE_TITLE}. Disclosures: <a href="/disclosure"
+						>/disclosure</a
+					>.
+				</p>
+			</aside>
+		</article>
+
+		<Footer />
+
+		<style>
+			article {
+				max-width: var(--measure);
+				margin: 0 auto;
+				padding: 4rem 1.25rem 2rem;
+			}
+
+			.post-head {
+				margin-bottom: 2.5rem;
+			}
+
+			.register {
+				margin: 0 0 1rem;
+			}
+
+			.post-head h1 {
+				font-size: 2.5rem;
+				line-height: 1.15;
+				margin: 0 0 0.75rem;
+				letter-spacing: -0.01em;
+			}
+
+			.dek {
+				font-size: 1.15rem;
+				color: var(--ink-soft);
+				font-style: italic;
+				margin: 0 0 1.25rem;
+				line-height: 1.45;
+			}
+
+			.byline {
+				margin: 0;
+			}
+
+			.post-body {
+				font-size: 1.05rem;
+			}
+
+			.post-body :global(h2) {
+				margin-top: 2.5rem;
+			}
+
+			.corrections {
+				margin: 3rem auto 0;
+				max-width: var(--measure);
+				padding-top: 1.5rem;
+				border-top: 1px solid var(--rule);
+			}
+
+			.corrections h2 {
+				font-size: 1rem;
+				font-family: var(--font-sans);
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				color: var(--ink-soft);
+				margin: 0 0 0.5rem;
+			}
+
+			.corrections ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				font-size: 0.95rem;
+				color: var(--ink-soft);
+			}
+
+			.corrections li {
+				margin-bottom: 0.4rem;
+			}
+
+			.disclosure-footer {
+				margin-top: 3rem;
+				padding-top: 1.5rem;
+				border-top: 1px solid var(--rule);
+			}
+
+			.disclosure-footer p {
+				margin: 0;
+				font-family: var(--font-sans);
+				font-size: 0.85rem;
+				color: var(--ink-soft);
+			}
+
+			@media (max-width: 640px) {
+				.post-head h1 {
+					font-size: 2rem;
+				}
+				.dek {
+					font-size: 1.05rem;
+				}
+			}
+		</style>
+	</body>
+</html>

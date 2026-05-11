@@ -1,0 +1,63 @@
+---
+import { SITE_TITLE, AUTHOR_NAME } from '../consts';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+	<div class="inner">
+		<nav aria-label="Footer">
+			<a href="/about">About</a>
+			<a href="/editorial-standards">Editorial Standards</a>
+			<a href="/disclosure">Disclosure</a>
+			<a href="/pitch">Pitch</a>
+			<a href="/rss.xml">RSS</a>
+		</nav>
+		<p class="colophon">
+			{SITE_TITLE} is written and edited by {AUTHOR_NAME}. &copy; {year}.
+		</p>
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		border-top: 1px solid var(--rule);
+		margin-top: 4rem;
+	}
+
+	.inner {
+		max-width: var(--measure-wide);
+		margin: 0 auto;
+		padding: 2.5rem 1.25rem 3.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		align-items: center;
+		text-align: center;
+	}
+
+	nav {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1.25rem;
+		font-family: var(--font-sans);
+		font-size: 0.82rem;
+		letter-spacing: 0.02em;
+	}
+
+	nav a {
+		color: var(--ink-soft);
+		text-decoration: none;
+	}
+
+	nav a:hover {
+		color: var(--accent);
+	}
+
+	.colophon {
+		margin: 0;
+		font-family: var(--font-sans);
+		font-size: 0.78rem;
+		color: var(--ink-soft);
+	}
+</style>
