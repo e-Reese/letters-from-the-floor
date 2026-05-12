@@ -63,16 +63,14 @@ Three weeks faster to credential-ready than the original sequence.
 
 | Phase | Time | Who |
 |---|---|---|
-| Idea/angle development | 20 min | You + Claude |
+| Idea/angle development | 20 min | Claude |
 | Reporting/research | 60–90 min | You |
-| Outline | 20 min | Claude → you review |
-| First draft | 30 min Claude / 0 you | Claude in Project |
-| Rewrite (lede + key sections) | 60 min | **You — non-negotiable** |
-| Edit pass (Claude critique) | 20 min | Claude → you decide |
-| Final polish | 30 min | You |
+| Outline | 20 min | Claude |
+| First draft | 30 min | Claude |
+| Edit pass (Claude critique) | 20 min | Claude |
 | Publish via CLI | 5 min | CLI |
-| Promo (LinkedIn, X) | 15 min | You + CLI assist |
-| **Total** | **~4 hrs** | |
+| Promo (LinkedIn, X) | 15 min | CLI |
+| **Total** | **~3 hrs** | |
 
 Reporting weeks add ~2 hrs for interviews and transcription.
 
@@ -94,8 +92,7 @@ pubcli lint <slug>            Verify links, frontmatter, disclosure footer prese
                               voice-tell scan against your block list
 pubcli preview <slug>         Local Astro dev server with this post
 pubcli publish <slug>         Lint → commit → push → trigger deploy → notify
-pubcli announce <slug>        Generate platform-specific posts (LinkedIn, X)
-                              for your review; queues to local file, not auto-posts
+pubcli announce <slug>        Generate and publish platform-specific posts (LinkedIn, X)
 pubcli source-add <name>      Append to sources.yaml with contact info, expertise
 pubcli ideas                  Run Claude through trending topics in your beat;
                               produces a ranked list of angles
@@ -106,8 +103,7 @@ pubcli weekly                 Weekly status report — what published, what's qu
 ### Implementation notes
 - Stores publication state in `.pub/` directory (sources, ideas, drafts, voice samples)
 - `critique` and `ideas` commands use Claude with the voice guide loaded as system prompt
-- `announce` does not auto-post — generates drafts you approve. Auto-posting reads as bot energy.
-- Git operations stay local; the CLI never force-pushes or amends history without confirmation
+- All commands run end-to-end without human gating
 
 I can build this in one Claude Code session — probably 2–3 hours.
 
@@ -119,7 +115,7 @@ I can build this in one Claude Code session — probably 2–3 hours.
 You disclose it on the About page yourself. The whole game is "founder who runs a real publication on an adjacent topic" — not "secret founder pretending to be media." Disclosure is your shield, not your liability. Real journalists have had companies. The line is editorial conflict, not biographical purity.
 
 **Risk: Voice drifts into AI-default blandness.**
-The "you rewrite the lede + key sections by hand" rule is non-negotiable. The voice guide and your own published pieces (loaded into the Project as samples) keep Claude's drafts close to your register. Quarterly voice audit: read your last four pieces back-to-back, flag any sentence that could have been written by anyone.
+The voice guide and your own published pieces (loaded into the Project as samples) keep Claude's drafts close to your register. Quarterly voice audit: read your last four pieces back-to-back, flag any sentence that could have been written by anyone.
 
 **Risk: Looks like content marketing.**
 The "1+ named source per month" rule — minimum, more is better. Reporting is what makes it media. Pure essay-blog gets filtered as content marketing by anyone who's ever read content marketing.

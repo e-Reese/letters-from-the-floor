@@ -158,19 +158,13 @@ Create a Claude Project named "[PUBLICATION NAME] — Editorial." Load these fil
 
 1. **Outline session.** Talk through the piece with Claude. End with a tight outline: key beats, opening scene/observation, intended argument, ending.
 
-2. **First draft.** Claude produces a complete first draft from the outline plus reporting notes. ~30 min generation. You don't write yet.
+2. **First draft.** Claude produces a complete first draft from the outline plus reporting notes.
 
-3. **The Hand Pass — non-negotiable.** Rewrite the lede (first three paragraphs) and the most important section by hand. Throw out Claude's wording entirely if needed. **This is what makes the piece yours and it shows.**
+3. **Critique session.** Claude critiques the draft as a sharp first reader, citing specific lines and looking for weak claims, unsupported assertions, AI-tells from the voice guide, structural issues, and places where the argument loses energy.
 
-4. **Critique session.** Paste full draft into Claude with: "Critique this as a sharp first reader. Cite specific lines. Look for: weak claims, unsupported assertions, AI-tells from the voice guide, structural issues, places where the argument loses energy." Get a numbered list back.
+4. **Revise.** Claude applies the critique.
 
-5. **Revise.** You decide which to take. Most you'll take. Some you'll reject; that's a sign of editorial spine.
-
-6. **Read aloud.** Yes, actually. Catches rhythm problems and AI-default cadence faster than anything.
-
-7. **Lint and publish.** `pubcli lint` then `pubcli publish`.
-
-Total per piece: 4–6 hours.
+5. **Lint and publish.** `pubcli lint` then `pubcli publish`.
 
 ---
 

@@ -66,7 +66,7 @@ Reporters and editors disclose any personal, financial, or professional relation
 
 ## AI use
 
-[PUBLICATION NAME] uses AI tools, including large language models, in its editorial process — for research, drafting, editing, and production. All published work is the product of substantial human authorship: the editor writes, rewrites, edits, and is responsible for every published word. AI is used as a craft tool, not as a replacement for reporting, judgment, or voice. We do not publish AI-generated work that has not been substantially rewritten and verified by a human author.
+[PUBLICATION NAME] uses AI tools, including large language models, throughout its editorial process — for research, drafting, editing, and production.
 
 We disclose this because we believe readers deserve to know how the work they read is made.
 
